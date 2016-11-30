@@ -1,0 +1,90 @@
+/*UiWithJava.java file
+This file is only used for creating UI*/
+
+package com.thenewboston.uiwithjava;
+
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+//import android.graphics.Color;
+import android.widget.EditText;
+import android.view.View;
+//import android.content.res.Resources;
+//import android.util.TypedValue;
+
+
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        RelativeLayout rlayout=new RelativeLayout(this);
+
+
+        Button btn1=new Button(this);
+        btn1.setText("Submit");
+
+
+        final EditText edt1=new EditText(this);
+
+        final TextView txt1=new TextView(this);
+        txt1.setText("Ui With Java");
+
+        txt1.setId(3);
+        btn1.setId(1);
+        edt1.setId(2);
+
+        RelativeLayout.LayoutParams buttonDetails=new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
+
+        RelativeLayout.LayoutParams edt1Details=new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        edt1Details.addRule(RelativeLayout.ABOVE,btn1.getId());
+        edt1Details.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        edt1Details.setMargins(0,0,0,50);
+
+        RelativeLayout.LayoutParams textDetails=new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        textDetails.addRule(RelativeLayout.BELOW,btn1.getId());
+        textDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        textDetails.setMargins(0,50,0,0);
+
+        //Resources r=getResources();
+        //int px=(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,100,
+          //      r.getDisplayMetrics());
+
+        edt1.setWidth(500);
+        txt1.setWidth(200);
+        btn1.setWidth(800);
+
+
+        rlayout.setBackgroundColor(Color.LTGRAY);
+        rlayout.addView(btn1,buttonDetails);
+        rlayout.addView(edt1,edt1Details);
+        rlayout.addView(txt1,textDetails);
+        setContentView(rlayout);
+
+        btn1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                txt1.setText(edt1.getText().toString());
+            }
+        }
+
+        );
+
+    }
+}
