@@ -1,0 +1,438 @@
+..........MainActivity.java...........
+
+package com.thenewboston.calculator;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+//import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+//import android.widget.TextView;
+import android.view.View;
+//import android.view.Menu;
+//import android.view.MenuItem;
+import java.io.Serializable;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    Button buttonone,buttontwo,buttonthree,buttonfour,buttonfive,buttonsix,
+            buttonseven,buttoneight,buttonnine,buttonzero,buttondot,
+             buttonc,buttonadd,buttonsub,buttonmul,buttondiv,buttonequal,buttonper;
+
+    EditText edt1;
+    float mValueOne,mValueTwo;
+
+    Boolean mAddition=false,mSubtraction=false,mMultiplication=false,
+            mDivision=false,mPercent=false;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        buttonone=(Button) findViewById(R.id.buttonone);
+        buttontwo=(Button) findViewById(R.id.buttontwo);
+        buttonthree=(Button) findViewById(R.id.buttonthree);
+        buttonfour=(Button) findViewById(R.id.buttonfour);
+        buttonfive=(Button) findViewById(R.id.buttonfive);
+        buttonsix=(Button) findViewById(R.id.buttonsix);
+        buttonseven=(Button) findViewById(R.id.buttonseven);
+        buttoneight=(Button) findViewById(R.id.buttoneight);
+        buttonnine=(Button) findViewById(R.id.buttonnine);
+        buttonzero=(Button) findViewById(R.id.buttonzero);
+        buttondot=(Button) findViewById(R.id.buttondot);
+        buttonc=(Button) findViewById(R.id.buttonc);
+        buttonadd=(Button) findViewById(R.id.buttonadd);
+        buttonsub=(Button) findViewById(R.id.buttonsub);
+        buttonmul=(Button) findViewById(R.id.buttonmul);
+        buttondiv=(Button) findViewById(R.id.buttondiv);
+        buttonequal=(Button)findViewById(R.id.buttonequal);
+        buttonper=(Button) findViewById(R.id.buttonper);
+
+        edt1=(EditText) findViewById(R.id.edt1);
+
+        buttonone.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"1");
+            }
+        });
+        buttontwo.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"2");
+            }
+        });
+        buttonthree.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"3");
+            }
+        });
+        buttonfour.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"4");
+            }
+        });
+        buttonfive.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"5");
+            }
+        });
+        buttonsix.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"6");
+            }
+        });
+        buttonseven.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"7");
+            }
+        });
+        buttoneight.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"8");
+            }
+        });
+        buttonnine.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"9");
+            }
+        });
+        buttonzero.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+"0");
+            }
+        });
+        buttonadd.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+                   mValueOne=Float.parseFloat(edt1.getText()+"");
+                   mAddition=true;
+                   edt1.setText(null);
+
+            }
+        });
+        buttonsub.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                mValueOne=Float.parseFloat(edt1.getText()+"");
+                mSubtraction=true;
+                edt1.setText(null);
+
+            }
+        });
+        buttonmul.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                mValueOne=Float.parseFloat(edt1.getText()+"");
+                mMultiplication=true;
+                edt1.setText(null);
+
+            }
+        });
+        buttondiv.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                mValueOne=Float.parseFloat(edt1.getText()+"");
+                mDivision=true;
+                edt1.setText(null);
+
+            }
+        });
+        buttonper.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                mValueOne=Float.parseFloat(edt1.getText()+"");
+                mPercent=true;
+                edt1.setText(null);
+
+            }
+        }
+        );
+
+        buttonequal.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                mValueTwo=Float.parseFloat(edt1.getText()+"");
+               // Log.d("AppDebug","mValueTwo: " + String.valueOf(mValueTwo));
+                //Log.d("AppDebug","mValueOne: " + String.valueOf(mValueOne));
+                if(mAddition.equals(true)) {
+                  edt1.setText(mValueOne + mValueTwo +"");
+                    mAddition=false;
+                }
+                if(mSubtraction.equals(true)){
+                    edt1.setText(mValueOne-mValueTwo+"");
+                    mSubtraction=false;
+                }
+                if(mMultiplication.equals(true)){
+                    edt1.setText(mValueOne*mValueTwo+"");
+                    mMultiplication=false;
+                }
+                if(mDivision.equals(true)){
+                    edt1.setText(mValueOne/mValueTwo+"");
+                    mDivision=false;
+                }
+                if(mPercent.equals(true)){
+                    edt1.setText((mValueOne*mValueTwo)/100+"");
+                    mPercent=false;
+                }
+            }
+        });
+        buttonc.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    edt1.setText(" ");
+                }
+        });
+        buttondot.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                edt1.setText(edt1.getText()+".");
+            }
+        }
+        );
+
+    }
+}
+
+activity_main.xml.....................................
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.thenewboston.calculator.MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="@string/edittext_text"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:id="@+id/edt1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/one_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"
+        android:id="@+id/buttonone"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/four_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/buttonfour"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/two_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonone"
+        android:layout_toRightOf="@+id/buttonone"
+        android:layout_toEndOf="@+id/buttonone"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/buttontwo"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/five_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonfive"
+        android:layout_alignBaseline="@+id/buttonfour"
+        android:layout_alignBottom="@+id/buttonfour"
+        android:layout_alignLeft="@+id/buttontwo"
+        android:layout_alignStart="@+id/buttontwo"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/three_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonthree"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_alignBaseline="@+id/buttontwo"
+        android:layout_alignBottom="@+id/buttontwo"
+        android:layout_toRightOf="@+id/buttontwo"
+        android:layout_toEndOf="@+id/buttontwo" />
+
+    <Button
+        android:text="@string/six_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonsix"
+        android:layout_alignBaseline="@+id/buttonfive"
+        android:layout_alignBottom="@+id/buttonfive"
+        android:layout_alignLeft="@+id/buttonthree"
+        android:layout_alignStart="@+id/buttonthree"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/seven_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonfour"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/buttonseven"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/eight_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttoneight"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_alignBaseline="@+id/buttonseven"
+        android:layout_alignBottom="@+id/buttonseven"
+        android:layout_alignLeft="@+id/buttonfive"
+        android:layout_alignStart="@+id/buttonfive" />
+
+    <Button
+        android:text="@string/nine_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttoneight"
+        android:layout_alignLeft="@+id/buttonsix"
+        android:layout_alignStart="@+id/buttonsix"
+        android:id="@+id/buttonnine"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/dot_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonseven"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/buttondot"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/zero_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttondot"
+        android:layout_alignLeft="@+id/buttoneight"
+        android:layout_alignStart="@+id/buttoneight"
+        android:id="@+id/buttonzero"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/c_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttonzero"
+        android:layout_alignLeft="@+id/buttonnine"
+        android:layout_alignStart="@+id/buttonnine"
+        android:id="@+id/buttonc"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:text="@string/plus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonthree"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:id="@+id/buttonadd" />
+
+    <Button
+        android:text="@string/division_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonmul"
+        android:layout_alignRight="@+id/buttonmul"
+        android:layout_alignEnd="@+id/buttonmul"
+        android:layout_marginTop="12dp"
+        android:id="@+id/buttondiv" />
+
+    <Button
+        android:text="@string/minus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonsub"
+        android:layout_alignBaseline="@+id/buttonsix"
+        android:layout_alignBottom="@+id/buttonsix"
+        android:layout_alignLeft="@+id/buttonadd"
+        android:layout_alignStart="@+id/buttonadd" />
+
+    <Button
+        android:text="@string/mul_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonmul"
+        android:layout_alignBaseline="@+id/buttonnine"
+        android:layout_alignBottom="@+id/buttonnine"
+        android:layout_alignLeft="@+id/buttonsub"
+        android:layout_alignStart="@+id/buttonsub" />
+
+    <Button
+        android:text="@string/equal_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/buttonzero"
+        android:layout_marginBottom="51dp"
+        android:id="@+id/buttonequal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/txt1"
+        android:text="custom app developed by amit" />
+
+    <Button
+        android:text="@string/Percent_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonper"
+        android:layout_below="@+id/buttonc"
+        android:layout_alignLeft="@+id/buttondiv"
+        android:layout_alignStart="@+id/buttondiv"
+        android:layout_marginTop="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        style="@android:style/Widget.Button" />
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
